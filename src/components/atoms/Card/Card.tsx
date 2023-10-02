@@ -32,6 +32,7 @@ export const Card = ({
               <img
                 src={`${apiUrl}/api/thumb/${folderName}/${img}.jpg`}
                 alt={img}
+                loading="lazy"
               />
             )}
           </div>

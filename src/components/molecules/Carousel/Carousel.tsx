@@ -5,9 +5,14 @@ import { StoreI } from "@/store/types";
 import { getImagePath } from "@/utils";
 import { getFiles } from "@/api";
 import { currentPhotosActions } from "@/store";
+import { Loader } from "@/components";
 
 export const Carousel = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [loaded, setLoaded] = useState(0);
+  const loadedPhotosCounter = useSelector(
+    (state: StoreI) => state.currentPhotos.loaded
+  );
 
   const dispatch = useDispatch();
 
@@ -25,10 +30,10 @@ export const Carousel = () => {
     const loadCarousel = async () => {
       const length = await handleLoadImages();
       interval = setInterval(() => {
-        setCurrentImageIndex(prevIndex => (prevIndex + 1) % length);
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % length);
       }, 4000);
     };
-
+    dispatch(currentPhotosActions.setLoaded(0));
     loadCarousel();
 
     return () => {
@@ -37,17 +42,24 @@ export const Carousel = () => {
   }, []);
 
   return (
-    <div className="carousel-container">
-      {images.map((image, index) => (
-        <img
-          key={index}
-          src={getImagePath(image)}
-          alt={`Image ${index + 1}`}
-          className={`carousel-image ${
-            index === currentImageIndex ? "visible" : ""
-          }`}
-        />
-      ))}
-    </div>
+    <>
+      {images.length - 1 > loaded && (
+        <Loader message="Piękny zdjęcia jeszcze się ładują" />
+      )}
+      <div className="carousel-container">
+        {images.map((image, index) => (
+          <img
+            loading="lazy"
+            key={index}
+            src={getImagePath(image)}
+            alt={`Image ${index + 1}`}
+            className={`carousel-image ${
+              index === currentImageIndex ? "visible" : ""
+            }`}
+            onLoad={() => setLoaded((prev) => prev + 1)}
+          />
+        ))}
+      </div>
+    </>
   );
 };

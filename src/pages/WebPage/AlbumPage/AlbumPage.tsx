@@ -41,12 +41,12 @@ export const AlbumPage = () => {
   const getData = async () => {
     if (params.name) {
       const folders = await getFolders();
-      const thisFolder = folders.find(folder => folder.name === params.name);
+      const thisFolder = folders.find((folder) => folder.name === params.name);
       if (!thisFolder) navigate("/gallery");
       const data = await getFolder(params.name);
       setTitleImage(thisFolder!.image);
       const header: HeaderDocumentI = data.find(
-        document => document.id === "index"
+        (document) => document.id === "index"
       );
       setImages(await getFiles(params.name));
       setHeader(header);
@@ -73,14 +73,14 @@ export const AlbumPage = () => {
     setIsViewerOpen(false);
   };
 
-  const handleLoadPicture = () => setCountLoaded(prev => prev + 1);
+  const handleLoadPicture = () => setCountLoaded((prev) => prev + 1);
   return (
     <>
       {loading && <Loader message="Na fajne zdjęcia musisz chwilę poczekać" />}
       {isViewerOpen && (
         <div className="album-imageViewer">
           <ImageViewer
-            src={images.map(image => getImagePath(image))}
+            src={images.map((image) => getImagePath(image))}
             currentIndex={currentImage}
             disableScroll={false}
             closeOnClickOutside={true}
@@ -111,6 +111,7 @@ export const AlbumPage = () => {
                 <img
                   src={`${apiUrl}/api/image/${params.name}/${section.image}`}
                   alt=""
+                  loading="lazy"
                 />
                 <div className="album-section-content">
                   <h2>{section.title}</h2>
@@ -130,6 +131,7 @@ export const AlbumPage = () => {
                 <img
                   src={`${apiUrl}/api/image/${params.name}/${section.image}`}
                   alt=""
+                  loading="lazy"
                 />
               </>
             )}
@@ -145,6 +147,7 @@ export const AlbumPage = () => {
             src={getImagePath(image, "thumb")}
             onClick={() => openImageViewer(index)}
             onLoad={handleLoadPicture}
+            loading="lazy"
           />
         ))}
       </StackGrid>

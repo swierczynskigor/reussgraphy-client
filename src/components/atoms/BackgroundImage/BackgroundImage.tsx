@@ -15,7 +15,7 @@ export const BackgroundImage = ({ src, className, children }: PropsI) => {
   return (
     <div className={"bg-container " + className}>
       <div className="bg-image">
-        <img src={src} />
+        <img src={src} loading="lazy" />
         <div
           className="bg-dark"
           style={{ backgroundColor: theme.theme.cover.imageDark }}

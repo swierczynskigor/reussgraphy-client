@@ -17,7 +17,7 @@ export const Navbar = () => {
       }}
     >
       <div className="navbar-logo flex-center">
-        <img src="/logo.jpg" />
+        <img src="/logo.jpg" loading="lazy" />
       </div>
       <nav>
         <NavLink

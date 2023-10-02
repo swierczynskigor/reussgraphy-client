@@ -28,7 +28,7 @@ export const AboutMe = () => {
       </section>
       <div className="aboutMe-card">
         <div className="aboutMe-first-content">
-          <img src="/ja.jpg" alt="me" />
+          <img src="/ja.jpg" alt="me" loading="lazy" />
         </div>
         <div className="aboutMe-second-content">
           <span>A oto ja (w tle to mój przyjaciel Piotr :3)</span>

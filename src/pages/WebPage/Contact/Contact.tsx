@@ -24,19 +24,19 @@ export const Contact = () => {
   return (
     <>
       <div className="flex-center contact-main">
-        <form className="form" onSubmit={e => handleSubmit(e)}>
+        <form className="form" onSubmit={(e) => handleSubmit(e)}>
           <h2 className="title">Zapraszam do kontaktu🥰</h2>
           <input
             value={email}
             type="text"
             placeholder="Email"
             className="input"
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <textarea
             value={content}
             placeholder="Your message"
-            onChange={e => setContent(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
           />
           <Button disabled={disableForm} type="submit">
             Wyślij
@@ -53,7 +53,7 @@ export const Contact = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <img src="/instagramLogo.png" alt="Instagram" />
+          <img src="/instagramLogo.png" alt="Instagram" loading="lazy" />
         </a>
       </div>
     </>

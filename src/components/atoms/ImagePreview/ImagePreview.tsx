@@ -24,6 +24,7 @@ export const ImagePreview = ({
         </button>
       )}
       <img
+        loading="lazy"
         onClick={onImageClick && (() => onImageClick(Number(id)))}
         src={image}
         style={{ cursor: onImageClick ? "pointer" : "default" }}
