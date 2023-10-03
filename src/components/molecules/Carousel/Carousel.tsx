@@ -31,7 +31,7 @@ export const Carousel = () => {
       const length = await handleLoadImages();
       interval = setInterval(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % length);
-      }, 4000);
+      }, 6000);
     };
     dispatch(currentPhotosActions.setLoaded(0));
     loadCarousel();
@@ -44,7 +44,7 @@ export const Carousel = () => {
   return (
     <>
       {images.length - 1 > loaded && (
-        <Loader message="Piękny zdjęcia jeszcze się ładują" />
+        <Loader message="Piękne zdjęcia jeszcze się ładują" />
       )}
       <div className="carousel-container">
         {images.map((image, index) => (
