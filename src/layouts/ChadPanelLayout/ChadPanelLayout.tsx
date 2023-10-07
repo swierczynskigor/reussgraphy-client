@@ -12,10 +12,10 @@ export const ChadPanelLayout = () => {
   useEffect(() => {
     checkToken();
   }, [location.pathname, localStorage.getItem("token")]);
-  console.log(location.pathname);
+
   const path = location.pathname
     .split("/")
-    .filter(i => i.length)
+    .filter((i) => i.length)
     .reverse()[0]
     .toLowerCase();
 

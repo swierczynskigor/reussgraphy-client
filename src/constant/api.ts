@@ -1,1 +1,2 @@
-export const apiUrl = "http://35.228.89.1:8080";
+export const apiUrl =
+  "https://web-ofvxhq40npw0.up-fi-hel1-1.apps.run-on-seenode.com";
