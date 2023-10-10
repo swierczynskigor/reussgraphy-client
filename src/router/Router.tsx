@@ -11,7 +11,7 @@ import {
   HomePage,
   MainPagePanel,
   PanelLogin,
-} from "@/pages-old";
+} from "@/pages";
 
 export const Router = () => {
   useEffect(() => {
