@@ -11,7 +11,7 @@ import {
   HomePage,
   MainPagePanel,
   PanelLogin,
-} from "@/pages";
+} from "@/pages-old";
 
 export const Router = () => {
   useEffect(() => {
@@ -34,7 +34,6 @@ export const Router = () => {
         <Route path="czadowyPanel" element={<ChadPanelLayout />}>
           <Route path="settings">
             <Route index element={<MainPagePanel />} />
-            <Route path="main" />
             <Route path="folders/:name" element={<FolderPagePanel />} />
           </Route>
           <Route path="login" element={<PanelLogin />} />
