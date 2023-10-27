@@ -19,7 +19,7 @@ export const GalleryPage = () => {
 
   return (
     <div className="gallery-main">
-      {folders.map(folder => (
+      {folders.reverse().map((folder) => (
         <Card
           key={folder.name}
           to={folder.name}
