@@ -2,10 +2,8 @@
 import { ImagePreview } from "@/components";
 import "./ShowImages.scss";
 
-import { apiUrl } from "@/constant";
 import { PhotoI } from "@/types";
 import { getImagePath } from "@/utils";
-import { useEffect, useState } from "react";
 
 interface ShowImagesI {
   images?: string[];
