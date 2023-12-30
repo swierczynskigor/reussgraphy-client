@@ -20,8 +20,6 @@ export const ShowImages = ({
   onDelete,
   onImageClick,
 }: ShowImagesI) => {
-  console.log(linkedImages);
-
   return (
     <div className="images-container">
       {images
