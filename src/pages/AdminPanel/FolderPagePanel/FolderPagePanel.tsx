@@ -35,12 +35,12 @@ export const FolderPagePanel = () => {
   const getData = async () => {
     if (params.name) {
       const folders = await getFolders();
-      const thisFolder = folders.find(folder => folder.name === params.name);
+      const thisFolder = folders.find((folder) => folder.name === params.name);
       if (!thisFolder) navigate("/czadowyPanel/settings");
       const data = await getFolder(params.name);
       setSelectedImage(thisFolder!.image);
       const header: HeaderDocumentI = data.find(
-        document => document.id === "index"
+        (document) => document.id === "index"
       );
 
       setTitle(header.title);
@@ -79,10 +79,9 @@ export const FolderPagePanel = () => {
     setSections([...tempSections]);
   };
 
-  const handleSelectImage = async (idx: number) => {
-    if (params.name)
-      await updateFolderImage({ name: params.name, image: idx.toString() });
-    setSelectedImage(idx.toString());
+  const handleSelectImage = async (idx: string) => {
+    if (params.name) await updateFolderImage({ name: params.name, image: idx });
+    setSelectedImage(idx);
   };
 
   return (

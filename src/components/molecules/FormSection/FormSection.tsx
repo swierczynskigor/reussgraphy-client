@@ -54,9 +54,9 @@ export const FormSection = ({
     deleteSection(idx);
   };
 
-  const handleSelectImage = (idx: number) => {
+  const handleSelectImage = (idx: string) => {
     setUpdated(true);
-    setSelectedImage(idx.toString());
+    setSelectedImage(idx);
   };
 
   return (
