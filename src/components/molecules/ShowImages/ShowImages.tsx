@@ -5,6 +5,7 @@ import "./ShowImages.scss";
 import { apiUrl } from "@/constant";
 import { PhotoI } from "@/types";
 import { getImagePath } from "@/utils";
+import { useEffect, useState } from "react";
 
 interface ShowImagesI {
   images?: string[];
@@ -19,6 +20,8 @@ export const ShowImages = ({
   onDelete,
   onImageClick,
 }: ShowImagesI) => {
+  console.log(linkedImages);
+
   return (
     <div className="images-container">
       {images
@@ -32,7 +35,7 @@ export const ShowImages = ({
               onImageClick={onImageClick && (() => onImageClick(idx))}
             />
           ))
-        : linkedImages?.map(image => (
+        : linkedImages?.map((image) => (
             <ImagePreview
               key={image.id}
               id={image.id}

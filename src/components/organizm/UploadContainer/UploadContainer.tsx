@@ -63,7 +63,7 @@ export const UploadContainer = ({ url, title }: UploadContainerI) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // console.log(uploadedImages);
+  console.log(uploadedImages);
   return (
     <>
       <h3>{title}</h3>
