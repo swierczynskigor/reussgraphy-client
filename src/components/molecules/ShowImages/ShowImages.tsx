@@ -5,12 +5,13 @@ import "./ShowImages.scss";
 import { apiUrl } from "@/constant";
 import { PhotoI } from "@/types";
 import { getImagePath } from "@/utils";
+import { useEffect, useState } from "react";
 
 interface ShowImagesI {
   images?: string[];
   linkedImages?: PhotoI[];
-  onDelete?: (idx: number) => void;
-  onImageClick?: (idx: number) => void;
+  onDelete?: (idx: string) => void;
+  onImageClick?: (idx: string) => void;
 }
 
 export const ShowImages = ({
@@ -28,20 +29,20 @@ export const ShowImages = ({
               id={idx.toString()}
               image={image}
               alt={`img${idx}`}
-              onDelete={onDelete && (() => onDelete(idx))}
-              onImageClick={onImageClick && (() => onImageClick(idx))}
+              onDelete={onDelete && (() => onDelete(idx.toString()))}
+              onImageClick={
+                onImageClick && (() => onImageClick(idx.toString()))
+              }
             />
           ))
-        : linkedImages?.map(image => (
+        : linkedImages?.map((image) => (
             <ImagePreview
               key={image.id}
               id={image.id}
               image={getImagePath(image, "thumb")}
               alt={`img${image.id}`}
-              onDelete={onDelete && (() => onDelete(Number(image.id)))}
-              onImageClick={
-                onImageClick && (() => onImageClick(Number(image.id)))
-              }
+              onDelete={onDelete && (() => onDelete(image.id))}
+              onImageClick={onImageClick && (() => onImageClick(image.id))}
             />
           ))}
     </div>
