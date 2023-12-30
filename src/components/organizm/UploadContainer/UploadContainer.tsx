@@ -36,12 +36,12 @@ export const UploadContainer = ({ url, title }: UploadContainerI) => {
     setImages([...images, ...urls]);
   };
 
-  const handleRemoveLocalImage = (idx: number) => {
+  const handleRemoveLocalImage = (idx: string) => {
     const tempImages = [...images];
-    tempImages.splice(idx, 1);
+    tempImages.splice(+idx, 1);
     setImages(tempImages);
 
-    const newForm = removeByIndex(formData, idx);
+    const newForm = removeByIndex(formData, +idx);
     setFormData(newForm);
   };
 
@@ -54,7 +54,7 @@ export const UploadContainer = ({ url, title }: UploadContainerI) => {
       1000
     );
   };
-  const handleRemoveImageFromServer = async (id: number) => {
+  const handleRemoveImageFromServer = async (id: string) => {
     dispatch(currentPhotosActions.setPhotos(await deleteFile(id, url)));
   };
 

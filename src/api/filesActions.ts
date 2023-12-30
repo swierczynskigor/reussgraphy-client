@@ -15,26 +15,26 @@ export const getFiles = async (url: string) => {
   let images: PhotoI[] = [];
   await axios
     .post(apiUrl + "/api/get/" + url)
-    .then(response => {
+    .then((response) => {
       // Handle response from the server
       images = response.data;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
       // Handle error
     });
   return images;
 };
 
-export const deleteFile = async (id: number, url: string) => {
+export const deleteFile = async (id: string, url: string) => {
   let images: PhotoI[] = [];
   await axios
     .delete(apiUrl + "/api/image/" + url + "/" + id)
-    .then(response => {
+    .then((response) => {
       // Handle response from the server
       images = response.data;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
       // Handle error
     });
