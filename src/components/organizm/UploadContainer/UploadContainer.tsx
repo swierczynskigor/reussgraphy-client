@@ -6,6 +6,7 @@ import { concatenateFormData, removeByIndex } from "@/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreI } from "@/store/types";
 import { currentPhotosActions } from "@/store";
+import "./UploadContainer.scss";
 
 interface UploadContainerI {
   url: string;
@@ -16,6 +17,7 @@ export const UploadContainer = ({ url, title }: UploadContainerI) => {
   const dispatch = useDispatch();
   const [images, setImages] = useState<string[]>([]);
   const [formData, setFormData] = useState(new FormData());
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const uploadedImages = useSelector(
     (state: StoreI) => state.currentPhotos.photos
@@ -46,6 +48,7 @@ export const UploadContainer = ({ url, title }: UploadContainerI) => {
   };
 
   const handleSendImages = async () => {
+    setButtonDisabled(true);
     await sendFiles(formData, url);
     setFormData(new FormData());
     setImages([]);
@@ -53,6 +56,7 @@ export const UploadContainer = ({ url, title }: UploadContainerI) => {
       async () => dispatch(currentPhotosActions.setPhotos(await getFiles(url))),
       1000
     );
+    setButtonDisabled(false);
   };
   const handleRemoveImageFromServer = async (id: string) => {
     dispatch(currentPhotosActions.setPhotos(await deleteFile(id, url)));
@@ -68,9 +72,16 @@ export const UploadContainer = ({ url, title }: UploadContainerI) => {
       <h3>{title}</h3>
       <ImagesDrop onChange={handleDropImages} />
       <ShowImages images={images} onDelete={handleRemoveLocalImage} />
-      <Button type="submit" onClick={() => handleSendImages()}>
-        Upload
-      </Button>
+      <div className="buttonContainer">
+        <Button
+          type="submit"
+          onClick={() => handleSendImages()}
+          disabled={buttonDisabled}
+        >
+          Upload
+        </Button>
+        {buttonDisabled && <h4>Wysyłanie...</h4>}
+      </div>
       <ShowImages
         linkedImages={uploadedImages}
         onDelete={handleRemoveImageFromServer}

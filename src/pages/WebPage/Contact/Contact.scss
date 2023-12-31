@@ -39,12 +39,12 @@
     }
   }
   &-ig {
-    position: absolute;
-    right: 10px;
+    width: 100%;
     bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-end;
     /* styles.css */
 
     /* Reset default styles for the button */
