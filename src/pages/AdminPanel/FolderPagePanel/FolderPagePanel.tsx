@@ -21,6 +21,7 @@ import {
 import { HeaderDocumentI, SectionI } from "@/types";
 import { SelectImageModal } from "@/modals";
 import { apiUrl } from "@/constant";
+import { getCardThumb } from "@/utils";
 
 export const FolderPagePanel = () => {
   const params = useParams();
@@ -114,7 +115,7 @@ export const FolderPagePanel = () => {
             <ImagePreview
               id={selectedImage}
               alt={"img" + selectedImage}
-              image={`${apiUrl}/api/image/${params.name}/${selectedImage}`}
+              image={getCardThumb(selectedImage, params.name || "")}
             />
           )}
           <SelectImageModal

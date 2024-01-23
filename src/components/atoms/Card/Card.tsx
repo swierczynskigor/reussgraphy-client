@@ -5,13 +5,14 @@ import "./Card.scss";
 import { useNavigate } from "react-router";
 
 import { apiUrl } from "@/constant";
+import { getCardThumb, getImagePath } from "@/utils";
 
 interface CardProps {
   icon?: JSX.Element | null;
   children: JSX.Element | string;
   to?: string;
   img?: string;
-  folderName?: string;
+  folderName: string;
 }
 
 export const Card = ({
@@ -30,7 +31,7 @@ export const Card = ({
           <div className="card-img">
             {img && (
               <img
-                src={`${apiUrl}/api/thumb/${folderName}/${img}.jpg`}
+                src={getCardThumb(img, folderName)}
                 alt={img}
                 loading="lazy"
               />
