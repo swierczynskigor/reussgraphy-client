@@ -12,8 +12,6 @@ interface PropsI {
 export const BackgroundImage = ({ src, className, children }: PropsI) => {
   const theme = useTheme();
 
-  console.log("src", src);
-
   return (
     <div className={"bg-container " + className}>
       <div className="bg-image">
