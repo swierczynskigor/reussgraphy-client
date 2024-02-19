@@ -74,9 +74,12 @@ export const AlbumPage = () => {
   };
 
   const handleLoadPicture = () => setCountLoaded((prev) => prev + 1);
+
   return (
     <>
-      {loading && <Loader message="Na fajne zdjęcia musisz chwilę poczekać" />}
+      {loading && images.length > 0 && (
+        <Loader message="Na fajne zdjęcia musisz chwilę poczekać" />
+      )}
       {isViewerOpen && (
         <div className="album-imageViewer">
           <ImageViewer
@@ -91,25 +94,31 @@ export const AlbumPage = () => {
           />
         </div>
       )}
-      {titleImage && (
-        <BackgroundImage
-          src={`${apiUrl}/api/image/${params.name}/${titleImage}`}
-        >
-          <div className="album-title">
-            <h1>{header?.title}</h1>
-            <article
-              dangerouslySetInnerHTML={{ __html: header?.description }}
-            />
-          </div>
-        </BackgroundImage>
-      )}
+
+      <BackgroundImage
+        src={
+          (titleImage &&
+            images.length > 0 &&
+            getImagePath(images.find((img) => img.id === titleImage)!)) ||
+          ""
+        }
+      >
+        <div className="album-title">
+          <h1>{header?.title}</h1>
+          <article dangerouslySetInnerHTML={{ __html: header?.description }} />
+        </div>
+      </BackgroundImage>
+
       <div className="album-sections">
         {header?.sections.map((section, index) => (
           <div key={index} className="album-section">
             {index % 2 === 0 ? (
               <>
                 <img
-                  src={`${apiUrl}/api/image/${params.name}/${section.image}`}
+                  src={getImagePath(
+                    images.find((img) => img.id === section.image)!,
+                    "thumb"
+                  )}
                   alt=""
                   loading="lazy"
                 />
