@@ -7,7 +7,7 @@ export const AboutMe = () => {
         <h1>Cześć jestem Michał</h1>
         <article>
           <p>
-            Cześć! Jestem Michał Reuss, mam 17 lat. Pasjonuję się fotografią
+            Cześć! Jestem Michał Reuss, mam 18 lat. Pasjonuję się fotografią
             oraz tworzeniem filmów. Już od 5 lat moje życie kręci się wokół
             obiektywu aparatu i kamery. Pochodzę z urokliwego Krakowa, który
             stanowi główne tło dla moich sesji zdjęciowych. Jednak jeśli jesteś
