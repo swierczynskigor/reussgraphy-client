@@ -94,59 +94,59 @@ export const AlbumPage = () => {
           />
         </div>
       )}
+      {images.length > 0 && (
+        <>
+          <BackgroundImage
+            src={getImagePath(images.find((img) => img.id === titleImage)!)}
+          >
+            <div className="album-title">
+              <h1>{header?.title}</h1>
+              <article
+                dangerouslySetInnerHTML={{ __html: header?.description }}
+              />
+            </div>
+          </BackgroundImage>
 
-      <BackgroundImage
-        src={
-          (titleImage &&
-            images.length > 0 &&
-            getImagePath(images.find((img) => img.id === titleImage)!)) ||
-          ""
-        }
-      >
-        <div className="album-title">
-          <h1>{header?.title}</h1>
-          <article dangerouslySetInnerHTML={{ __html: header?.description }} />
-        </div>
-      </BackgroundImage>
-
-      <div className="album-sections">
-        {header?.sections.map((section, index) => (
-          <div key={index} className="album-section">
-            {index % 2 === 0 ? (
-              <>
-                <img
-                  src={getImagePath(
-                    images.find((img) => img.id === section.image)!,
-                    "thumb"
-                  )}
-                  alt=""
-                  loading="lazy"
-                />
-                <div className="album-section-content">
-                  <h2>{section.title}</h2>
-                  <article
-                    dangerouslySetInnerHTML={{ __html: section.content }}
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="album-section-content">
-                  <h2>{section.title}</h2>
-                  <article
-                    dangerouslySetInnerHTML={{ __html: section.content }}
-                  />
-                </div>
-                <img
-                  src={`${apiUrl}/api/image/${params.name}/${section.image}`}
-                  alt=""
-                  loading="lazy"
-                />
-              </>
-            )}
+          <div className="album-sections">
+            {header?.sections.map((section, index) => (
+              <div key={index} className="album-section">
+                {index % 2 === 0 ? (
+                  <>
+                    <img
+                      src={getImagePath(
+                        images.find((img) => img.id === section.image)!,
+                        "thumb"
+                      )}
+                      alt=""
+                      loading="lazy"
+                    />
+                    <div className="album-section-content">
+                      <h2>{section.title}</h2>
+                      <article
+                        dangerouslySetInnerHTML={{ __html: section.content }}
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="album-section-content">
+                      <h2>{section.title}</h2>
+                      <article
+                        dangerouslySetInnerHTML={{ __html: section.content }}
+                      />
+                    </div>
+                    <img
+                      src={`${apiUrl}/api/image/${params.name}/${section.image}`}
+                      alt=""
+                      loading="lazy"
+                    />
+                  </>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
       {!header?.sections.length && <div className="album-spacer" />}
       <StackGrid columnWidth={window.innerWidth < 620 ? 150 : 300}>
         {images.map((image, index) => (
