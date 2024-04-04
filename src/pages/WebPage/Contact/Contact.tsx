@@ -53,7 +53,7 @@ export const Contact = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <img src="./instagramLogo.png" alt="Instagram" loading="lazy" />
+          <img src="./InstagramLogo.svg" alt="Instagram" loading="lazy" />
         </a>
       </div>
     </>

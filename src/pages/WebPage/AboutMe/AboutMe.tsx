@@ -31,7 +31,7 @@ export const AboutMe = () => {
           <img src="./ja.jpg" alt="me" loading="lazy" />
         </div>
         <div className="aboutMe-second-content">
-          <span>A oto ja (w tle to mój przyjaciel Piotr :3)</span>
+          <span>Kiedyś wpadnę na coś kreatywnego tutaj</span>
         </div>
       </div>
     </div>

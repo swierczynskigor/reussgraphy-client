@@ -20,7 +20,6 @@ import {
 } from "@/components";
 import { HeaderDocumentI, SectionI } from "@/types";
 import { SelectImageModal } from "@/modals";
-import { apiUrl } from "@/constant";
 import { getCardThumb } from "@/utils";
 
 export const FolderPagePanel = () => {
