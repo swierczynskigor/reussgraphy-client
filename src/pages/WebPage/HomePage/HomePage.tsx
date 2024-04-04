@@ -9,8 +9,8 @@ export const HomePage = () => {
       <Carousel />
       <div className="offer">
         <section>
-          <h1>Reussgraphy</h1>
-          <h2>momenty uchwycone na zawsze📸</h2>
+          <h1>Reussgraphy 📸</h1>
+          <h2>momenty uchwycone na zawsze</h2>
 
           <p>
             Uwiecznimy Twoje wspomnienia obiektywami kamery i aparatu. Nasza
