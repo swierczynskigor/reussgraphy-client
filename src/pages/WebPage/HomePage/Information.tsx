@@ -13,7 +13,7 @@ export const Information = () => {
       }}
     >
       <section>
-        <div
+        <figure
           style={{
             backgroundColor: theme.backgroundColor,
             boxShadow: `0 8px 32px 0 ${theme.boxshadow.primary}`,
@@ -34,10 +34,12 @@ export const Information = () => {
             wideo realizowane przy użyciu najlepszego sprzętu, aby zagwarantować
             Ci dzieło w najwyższej jakości.
           </p>
-        </div>
+        </figure>
 
         <figure>
-          <figcaption>Nasze Usługi:</figcaption>
+          <div className="title">
+            <figcaption>Nasze Usługi:</figcaption> <img src="" alt="" />
+          </div>
           <ul>
             <li>
               Wydarzenia Taneczne: Profesjonalnie rejestrujemy ruch i dynamikę

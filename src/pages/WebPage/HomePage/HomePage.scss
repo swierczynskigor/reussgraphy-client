@@ -10,6 +10,11 @@
     flex-direction: column;
     gap: 20px;
     max-width: 80%;
+    @media (max-width: 625px) {
+      max-width: 100%;
+      font-size: 14px;
+    }
+    transition: all 0.6s ease;
   }
   h1 {
     font-size: 4em;
@@ -17,11 +22,23 @@
     width: 100%;
     text-align: center;
     margin-bottom: -10px;
+    @media (max-width: 1200px) {
+      font-size: 2.6em;
+    }
+    @media (max-width: 375px) {
+      font-size: 2.2em;
+    }
+    transition: 0.6s ease all;
   }
   h6 {
     font-size: 1em;
     font-weight: 800;
     text-align: center;
+    @media (max-width: 390px) {
+      margin-top: 10px;
+      font-size: 1em;
+    }
+    transition: 0.6s ease all;
   }
 
   a {
@@ -29,11 +46,8 @@
     text-decoration: underline;
     cursor: pointer;
   }
-  div {
+  figure {
     width: 100%;
-    @media (max-width: 490px) {
-      height: 80px;
-    }
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,6 +55,33 @@
     -webkit-backdrop-filter: blur(6px);
     transition: all ease 0.6s;
     border-radius: 24px;
-    padding: 16px;
+    padding: 24px;
+    figcaption {
+      font-weight: 600;
+      font-size: 1.2em;
+      text-align: start;
+      width: 100%;
+    }
+    @media (max-width: 900px) {
+      padding: 16px;
+    }
+    max-width: 750px;
+    .title {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.divider {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  div {
+    width: 50px;
+    background-color: #111;
+    height: 1px;
   }
 }
