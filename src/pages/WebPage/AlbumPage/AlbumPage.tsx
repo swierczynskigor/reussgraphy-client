@@ -80,20 +80,6 @@ export const AlbumPage = () => {
       {loading && images.length > 0 && (
         <Loader message="Na fajne zdjęcia musisz chwilę poczekać" />
       )}
-      {isViewerOpen && (
-        <div className="album-imageViewer">
-          <ImageViewer
-            src={images.map((image) => getImagePath(image))}
-            currentIndex={currentImage}
-            disableScroll={false}
-            closeOnClickOutside={true}
-            backgroundStyle={{
-              backgroundColor: theme.theme.cover.seeThroughtDark,
-            }}
-            onClose={closeImageViewer}
-          />
-        </div>
-      )}
       {images.length > 0 && (
         <>
           <BackgroundImage
@@ -148,7 +134,10 @@ export const AlbumPage = () => {
         </>
       )}
       {!header?.sections.length && <div className="album-spacer" />}
-      <StackGrid columnWidth={window.innerWidth < 620 ? 150 : 300}>
+      <StackGrid
+        columnWidth={window.innerWidth < 620 ? 150 : 300}
+        style={{ marginBottom: "24px" }}
+      >
         {images.map((image, index) => (
           <img
             key={image._id}
@@ -160,6 +149,20 @@ export const AlbumPage = () => {
           />
         ))}
       </StackGrid>
+      {isViewerOpen && (
+        <div className="album-imageViewer">
+          <ImageViewer
+            src={images.map((image) => getImagePath(image))}
+            currentIndex={currentImage}
+            disableScroll={false}
+            closeOnClickOutside={true}
+            backgroundStyle={{
+              backgroundColor: theme.theme.cover.seeThroughtDark,
+            }}
+            onClose={closeImageViewer}
+          />
+        </div>
+      )}
     </>
   );
 };

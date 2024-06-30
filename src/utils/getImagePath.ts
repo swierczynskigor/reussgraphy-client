@@ -8,8 +8,8 @@ export const getImagePath = (
   // if (type === "thumb") return `${storageBucketUrl}/${image.thumbPath}`;
   // else if (type === "fullsize") return `${storageBucketUrl}/${image.path}`;
   if (type === "thumb")
-    return `${storageBucketUrl}/api/thumb/${image.album}/${image.id}.${image.extension}`;
+    return `${storageBucketUrl}/api/thumb/${image.album}/${image.id}.${image.extencion}`;
   else if (type === "fullsize")
-    return `${storageBucketUrl}/api/image/${image.album}/${image.id}.${image.extension}`;
+    return `${storageBucketUrl}/api/image/${image.album}/${image.id}.${image.extencion}`;
   return "";
 };

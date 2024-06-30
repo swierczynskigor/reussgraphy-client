@@ -12,7 +12,7 @@ export interface PhotoI {
   path: string;
   album: string;
   thumbPath: string;
-  extension: string;
+  extencion: string;
 }
 
 export interface FolderI {
