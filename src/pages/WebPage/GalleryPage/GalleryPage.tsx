@@ -1,6 +1,6 @@
 import "./GalleryPage.scss";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { getFolders } from "@/api";
 import { Card } from "@/components";

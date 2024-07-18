@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { createFolder } from "@/api";
 import { Button, TextInput } from "@/components";
@@ -29,7 +29,7 @@ export const NewFolderModal = ({ isVisible, close }: NewFolderModalProps) => {
             method={"POST"}
             action="/czadowyPanel/login"
             className="panel-login-form"
-            onSubmit={e => handleSubmit(e)}
+            onSubmit={(e) => handleSubmit(e)}
           >
             <TextInput
               label="New folder name"

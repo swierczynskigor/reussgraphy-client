@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import "./ImagesDrop.scss";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface ImagesDropProps {
   onChange: (e: FormData) => void;
@@ -71,13 +71,13 @@ export const ImagesDrop = ({ onChange }: ImagesDropProps) => {
         multiple
         type="file"
         style={{ display: "none" }}
-        onChange={e => handleInputFiles(e)}
+        onChange={(e) => handleInputFiles(e)}
       />
       <div
         className="images-drop-container"
-        onDragLeave={e => handleDragLeave(e)}
-        onDragOver={e => handleDragover(e)}
-        onDrop={e => handleDragDrop(e)}
+        onDragLeave={(e) => handleDragLeave(e)}
+        onDragOver={(e) => handleDragover(e)}
+        onDrop={(e) => handleDragDrop(e)}
         onClick={handleOpenFileDialog}
         onKeyDown={handleOpenFileDialog}
       >

@@ -1,6 +1,6 @@
 import "./ChadPanelLayout.scss";
 
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 
 import { verifyToken } from "@/api";

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { deleteFile, getFiles, sendFiles } from "@/api";
 import { Button, ImagesDrop, ShowImages } from "@/components";

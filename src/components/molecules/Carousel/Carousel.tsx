@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Carousel.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreI } from "@/store/types";

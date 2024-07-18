@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import "./Contact.scss";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { sendEmail } from "@/api";
 import { Button } from "@/components";

@@ -1,6 +1,6 @@
 import "./FormSection.scss";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { DeleteIcon } from "@/assets";
 import { Button, ImagePreview } from "@/components";

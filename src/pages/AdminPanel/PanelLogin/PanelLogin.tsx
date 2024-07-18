@@ -1,6 +1,6 @@
 import "./PanelLogin.scss";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { loginAction } from "@/api";
@@ -38,7 +38,7 @@ export const PanelLogin = () => {
           method={"POST"}
           action="/czadowyPanel/login"
           className="panel-login-form"
-          onSubmit={e => handleSubmit(e)}
+          onSubmit={(e) => handleSubmit(e)}
         >
           <TextInput
             label="Username"

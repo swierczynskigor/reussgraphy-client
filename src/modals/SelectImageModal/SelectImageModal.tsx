@@ -1,7 +1,7 @@
 import { ShowImages } from "@/components";
 import { ModalLayout } from "@/layouts";
 import { StoreI } from "@/store/types";
-import { useSelector } from "react-redux";
+import React, { useSelector } from "react-redux";
 
 interface NewFolderModalProps {
   isVisible: boolean;

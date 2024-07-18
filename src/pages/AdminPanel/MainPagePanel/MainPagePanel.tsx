@@ -1,16 +1,10 @@
 import "./MainPagePanel.scss";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { getFolders } from "@/api";
 import { FolderIcon } from "@/assets";
-import {
-  Button,
-  Card,
-  Spacer,
-  ManageSlider,
-  UploadContainer,
-} from "@/components";
+import { Button, Card, Spacer, UploadContainer } from "@/components";
 import { NewFolderModal } from "@/modals";
 import { FolderI } from "@/types";
 
@@ -45,7 +39,7 @@ export const MainPagePanel = () => {
           Add folder
         </Button>
         <div className="main-page-folders">
-          {folders.map(folder => (
+          {folders.map((folder) => (
             <Card
               key={folder.name}
               icon={<FolderIcon />}
