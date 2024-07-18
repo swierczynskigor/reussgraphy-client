@@ -6,3 +6,4 @@ export * from "./TextInput";
 export * from "./ImagePreview";
 export * from "./BackgroundImage";
 export * from "./ArrowDown";
+export * from "./Row/Row";
