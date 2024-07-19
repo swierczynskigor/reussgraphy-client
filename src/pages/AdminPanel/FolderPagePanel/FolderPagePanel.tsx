@@ -17,6 +17,7 @@ import {
   Spacer,
   TextInput,
   UploadContainer,
+  VideosContainer,
 } from "@/components";
 import { HeaderDocumentI, SectionI } from "@/types";
 import { SelectImageModal } from "@/modals";
@@ -40,13 +41,10 @@ export const FolderPagePanel = () => {
       const data: { id: string }[] = (await getFolder(params.name)) as {
         id: string;
       }[];
-      console.log(data);
       setSelectedImage(thisFolder!.image);
       const header: HeaderDocumentI = data.find(
         (document) => document.id === "index"
       ) as HeaderDocumentI;
-
-      console.log(data);
 
       setTitle(header.title);
       setDescription(header.description);
@@ -141,6 +139,7 @@ export const FolderPagePanel = () => {
           />
         </>
         <Spacer />
+
         <Button type="add" onClick={handleCreateSection}>
           Create section
         </Button>
@@ -160,6 +159,9 @@ export const FolderPagePanel = () => {
         </Button>
       </div>
       <Spacer />
+      <VideosContainer url={params.name || ""} title="Videos" />
+      <Spacer />
+
       <div className="folder-page-uploadContainer">
         <UploadContainer url={params.name || ""} title="Images" />
       </div>

@@ -3,6 +3,8 @@
 
 import "./ModalLayout.scss";
 
+import React from "react";
+
 interface ModalLayoutProps {
   children: JSX.Element;
   close: () => void;
