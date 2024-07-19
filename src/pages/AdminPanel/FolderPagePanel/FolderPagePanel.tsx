@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router";
 import {
   getFolder,
   getFolders,
+  removeWholeFolder,
   updateFolderImage,
   updateIndexDocument,
 } from "@/api";
@@ -36,11 +37,14 @@ export const FolderPagePanel = () => {
       const folders = await getFolders();
       const thisFolder = folders.find((folder) => folder.name === params.name);
       if (!thisFolder) navigate("/czadowyPanel/settings");
-      const data = await getFolder(params.name);
+      const data: { id: string }[] = (await getFolder(params.name)) as {
+        id: string;
+      }[];
+      console.log(data);
       setSelectedImage(thisFolder!.image);
       const header: HeaderDocumentI = data.find(
         (document) => document.id === "index"
-      );
+      ) as HeaderDocumentI;
 
       console.log(data);
 
@@ -85,10 +89,22 @@ export const FolderPagePanel = () => {
     setSelectedImage(idx);
   };
 
+  const handleRemoveFolder = async () => {
+    if (params.name) {
+      await removeWholeFolder(params.name);
+      navigate("/czadowyPanel/settings");
+    }
+  };
+
   return (
     <main className="folder-page-main">
       <h2>Folder name: {params.name}</h2>
-
+      <p>
+        Jak chcesz usunąć to kliknij tutaj👉{" "}
+        <span className="cursor-pointer" onClick={() => handleRemoveFolder()}>
+          🗑️
+        </span>
+      </p>
       <div>
         <TextInput
           label="Title"

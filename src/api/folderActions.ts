@@ -12,15 +12,19 @@ export const createFolder = async (body: unknown) => {
   });
 };
 
+export const removeWholeFolder = async (name: string) => {
+  await axios.delete(apiUrl + "/api/folder/" + name);
+};
+
 export const getFolders = async () => {
   let folders: FolderI[] = [];
   await axios
     .post(apiUrl + "/api/folders/get")
-    .then(response => {
+    .then((response) => {
       // Handle response from the server
       folders = response.data.folders;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
       // Handle error
     });
@@ -28,14 +32,14 @@ export const getFolders = async () => {
 };
 
 export const getFolder = async (name: string) => {
-  let folders: any[] = [];
+  let folders: unknown[] = [];
   await axios
     .post(apiUrl + "/api/folder/" + name)
-    .then(response => {
+    .then((response) => {
       // Handle response from the server
       folders = response.data;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
       // Handle error
     });
@@ -58,11 +62,11 @@ export const deleteFolder = async (id: number, url: string) => {
   let images: PhotoI[] = [];
   await axios
     .delete(apiUrl + "/api/image/" + url + "/" + id)
-    .then(response => {
+    .then((response) => {
       // Handle response from the server
       images = response.data;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
       // Handle error
     });
