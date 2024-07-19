@@ -24,7 +24,8 @@ export const UploadContainer = ({ url, title }: UploadContainerI) => {
   );
 
   const handleLoadImages = async () => {
-    dispatch(currentPhotosActions.setPhotos(await getFiles(url)));
+    const resImages = await getFiles(url);
+    dispatch(currentPhotosActions.setPhotos(resImages));
   };
 
   const handleDropImages = (form: FormData) => {
@@ -64,7 +65,6 @@ export const UploadContainer = ({ url, title }: UploadContainerI) => {
 
   useEffect(() => {
     handleLoadImages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

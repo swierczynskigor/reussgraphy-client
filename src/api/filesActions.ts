@@ -14,7 +14,7 @@ export const sendFiles = async (formData: FormData, url: string) => {
 export const getFiles = async (url: string) => {
   let images: PhotoI[] = [];
   await axios
-    .post(apiUrl + "/api/get/" + url)
+    .get(apiUrl + "/api/get/" + url)
     .then((response) => {
       // Handle response from the server
       images = response.data;

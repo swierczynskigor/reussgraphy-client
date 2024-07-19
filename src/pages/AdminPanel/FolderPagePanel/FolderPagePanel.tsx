@@ -1,7 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import "./FolderPagePanel.scss";
 
-import { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
 import {
@@ -42,6 +41,8 @@ export const FolderPagePanel = () => {
       const header: HeaderDocumentI = data.find(
         (document) => document.id === "index"
       );
+
+      console.log(data);
 
       setTitle(header.title);
       setDescription(header.description);
