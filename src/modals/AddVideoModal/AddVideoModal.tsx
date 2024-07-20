@@ -22,7 +22,6 @@ export const AddVideoModal = (props: Props) => {
       content,
     });
 
-    console.log(videos);
     if (videos.status === 200) {
       setConent("");
       setTitle("");

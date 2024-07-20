@@ -7,20 +7,24 @@ import { VideoIcon } from "@/assets";
 
 type Props = {
   videos: Video[];
+  deleteVideo: (id: string) => void;
 };
 
 export const VideosList = (props: Props) => {
   return (
     <div className="videolist-main">
-      {props.videos.map((video, index) => (
-        <div key={index} className="videolist-item">
-          <Row>
-            <VideoIcon />
-            <h3>{video.title}</h3>
-          </Row>
-          <Button type="delete">Delete</Button>
-        </div>
-      ))}
+      {props.videos &&
+        props.videos.map((video, index) => (
+          <div key={index} className="videolist-item">
+            <Row>
+              <VideoIcon />
+              <h3>{video.title}</h3>
+            </Row>
+            <Button type="delete" onClick={() => props.deleteVideo(video.id)}>
+              Delete
+            </Button>
+          </div>
+        ))}
     </div>
   );
 };

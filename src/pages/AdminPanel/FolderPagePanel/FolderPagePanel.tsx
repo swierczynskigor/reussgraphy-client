@@ -88,7 +88,10 @@ export const FolderPagePanel = () => {
   };
 
   const handleRemoveFolder = async () => {
-    if (params.name) {
+    if (
+      params.name &&
+      window.confirm("Are you sure you want to delete this?")
+    ) {
       await removeWholeFolder(params.name);
       navigate("/czadowyPanel/settings");
     }

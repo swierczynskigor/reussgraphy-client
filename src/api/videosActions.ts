@@ -20,3 +20,11 @@ export const addVideo = async (
 
   return response.data;
 };
+
+export const deleteVideo = async (folderName: string, id: string) => {
+  const response = await axios.delete(
+    `${apiUrl}/api/${folderName}/video/${id}`
+  );
+
+  return response.data;
+};

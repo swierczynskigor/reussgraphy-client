@@ -1,4 +1,4 @@
-import { getVideos } from "@/api/videosActions";
+import { deleteVideo, getVideos } from "@/api/videosActions";
 import { VideosList } from "@/components";
 import { Button } from "@/components/atoms";
 import { AddVideoModal } from "@/modals";
@@ -30,6 +30,11 @@ export const VideosContainer = (props: Props) => {
     if (newVideos) setVideos(newVideos);
   };
 
+  const handleDeleteVideo = async (id: string) => {
+    const response = await deleteVideo(props.url, id);
+    setVideos(response.videos);
+  };
+
   return (
     <>
       <AddVideoModal
@@ -42,7 +47,7 @@ export const VideosContainer = (props: Props) => {
         <Button type="add" onClick={() => handleOpenAddVideoModal()}>
           Add video
         </Button>
-        <VideosList videos={videos} />
+        <VideosList videos={videos} deleteVideo={handleDeleteVideo} />
       </div>
     </>
   );
