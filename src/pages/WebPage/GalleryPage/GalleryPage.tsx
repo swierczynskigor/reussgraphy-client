@@ -25,6 +25,7 @@ export const GalleryPage = () => {
           to={folder.name}
           folderName={folder.name}
           img={folder.image}
+          type={folder.type}
         >
           {folder.title}
         </Card>

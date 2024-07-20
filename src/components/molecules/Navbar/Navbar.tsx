@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/alt-text */
 import "./Navbar.scss";
+import React from "react";
 
 import { NavLink } from "react-router-dom";
 
@@ -17,7 +17,7 @@ export const Navbar = () => {
       }}
     >
       <div className="navbar-logo flex-center">
-        <img src="./logo.jpg" loading="lazy" />
+        <img src="/logo.jpg" loading="lazy" />
       </div>
       <nav>
         <NavLink

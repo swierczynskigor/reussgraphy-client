@@ -1,11 +1,9 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import "./Card.scss";
 
 import { useNavigate } from "react-router";
-
-import { apiUrl } from "@/constant";
-import { getCardThumb, getImagePath } from "@/utils";
+import React from "react";
+import { getCardThumb } from "@/utils";
+import { FolderTypeEnum } from "@/types";
 
 interface CardProps {
   icon?: JSX.Element | null;
@@ -13,6 +11,7 @@ interface CardProps {
   to?: string;
   img?: string;
   folderName: string;
+  type: FolderTypeEnum;
 }
 
 export const Card = ({
@@ -21,6 +20,7 @@ export const Card = ({
   to,
   img,
   folderName,
+  type,
 }: CardProps) => {
   const navigate = useNavigate();
 
@@ -28,6 +28,7 @@ export const Card = ({
     return (
       <article className="card" onClick={() => navigate(to)}>
         <div className="card-imgbox">
+          {type === FolderTypeEnum.VIDEO && <></>}
           <div className="card-img">
             {img && (
               <img

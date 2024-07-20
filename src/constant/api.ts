@@ -4,4 +4,4 @@ export const apiUrl =
 
 export const storageBucketUrl =
   // "https://reussgraphy.fra1.digitaloceanspaces.com";
-  "";
+  "http://localhost:8000";

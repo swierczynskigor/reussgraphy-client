@@ -1,19 +1,22 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "./AlbumPage.scss";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import ImageViewer from "react-simple-image-viewer";
 import StackGrid from "react-stack-grid";
 
 import { getFiles, getFolder, getFolders } from "@/api";
-import { BackgroundImage, Loader } from "@/components";
+import { BackgroundImage, Loader, Spacer, VideosGallery } from "@/components";
 import { apiUrl } from "@/constant";
 import { useTheme } from "@/theme";
-import { HeaderDocumentI, PhotoI } from "@/types";
+import {
+  FolderTypeEnum,
+  HeaderDocumentI,
+  PhotoI,
+  Video,
+  VideoDocutmentI,
+} from "@/types";
 import { getImagePath } from "@/utils";
 
 export const AlbumPage = () => {
@@ -26,12 +29,15 @@ export const AlbumPage = () => {
     description: "",
     sections: [],
     id: "",
+    type: FolderTypeEnum.IMAGE,
+    photosVisible: true,
     _id: "",
   });
 
   const [currentImage, setCurrentImage] = useState(0);
   const [images, setImages] = useState<PhotoI[]>([]);
   const [titleImage, setTitleImage] = useState("");
+  const [videos, setVideos] = useState<Video[]>([]);
   const [windowWith, setWindowWith] = useState(window.innerWidth);
 
   const [countLoaded, setCountLoaded] = useState(0);
@@ -42,12 +48,21 @@ export const AlbumPage = () => {
     if (params.name) {
       const folders = await getFolders();
       const thisFolder = folders.find((folder) => folder.name === params.name);
+
       if (!thisFolder) navigate("/gallery");
+
       const data = await getFolder(params.name);
-      setTitleImage(thisFolder!.image);
+
       const header: HeaderDocumentI = data.find(
-        (document) => document.id === "index"
-      );
+        (document: any) => document.id === "index"
+      ) as HeaderDocumentI;
+
+      const videosData: VideoDocutmentI = data.find(
+        (document: any) => document.id === "videos"
+      ) as VideoDocutmentI;
+
+      setVideos(videosData.videos as Video[]);
+      setTitleImage(thisFolder!.image);
       setImages(await getFiles(params.name));
       setHeader(header);
     }
@@ -73,6 +88,8 @@ export const AlbumPage = () => {
     setIsViewerOpen(false);
   };
 
+  console.log(videos);
+
   const handleLoadPicture = () => setCountLoaded((prev) => prev + 1);
 
   return (
@@ -83,7 +100,10 @@ export const AlbumPage = () => {
       {images.length > 0 && (
         <>
           <BackgroundImage
-            src={getImagePath(images.find((img) => img.id === titleImage)!)}
+            src={
+              titleImage &&
+              getImagePath(images.find((img) => img.id === titleImage)!)
+            }
           >
             <div className="album-title">
               <h1>{header?.title}</h1>
@@ -134,10 +154,9 @@ export const AlbumPage = () => {
         </>
       )}
       {!header?.sections.length && <div className="album-spacer" />}
-      <StackGrid
-        columnWidth={window.innerWidth < 620 ? 150 : 300}
-        style={{ marginBottom: "24px" }}
-      >
+      <VideosGallery videos={videos} />
+      {videos.length > 0 && <Spacer width="40%" />}
+      <StackGrid columnWidth={window.innerWidth < 620 ? 150 : 300}>
         {images.map((image, index) => (
           <img
             key={image._id}
@@ -149,6 +168,7 @@ export const AlbumPage = () => {
           />
         ))}
       </StackGrid>
+      <div style={{ height: "24px" }} />
       {isViewerOpen && (
         <div className="album-imageViewer">
           <ImageViewer

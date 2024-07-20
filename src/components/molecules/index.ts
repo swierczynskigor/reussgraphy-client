@@ -4,3 +4,4 @@ export * from "./ShowImages";
 export * from "./Navbar";
 export * from "./Carousel";
 export * from "./VideosList";
+export * from "./VideosGallery";

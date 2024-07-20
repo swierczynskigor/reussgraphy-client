@@ -22,6 +22,8 @@ export const Carousel = () => {
     const resImages = await getFiles("slider");
     dispatch(currentPhotosActions.setPhotos(resImages));
 
+    console.log(resImages);
+
     return resImages.length;
   };
 
@@ -35,6 +37,8 @@ export const Carousel = () => {
     };
     dispatch(currentPhotosActions.setLoaded(0));
     loadCarousel();
+
+    console.log();
 
     return () => {
       clearInterval(interval);

@@ -19,4 +19,11 @@ export interface FolderI {
   name: string;
   image: string;
   title: string;
+  type: FolderTypeEnum;
+  photosVisible: boolean;
+}
+
+export enum FolderTypeEnum {
+  VIDEO = "video",
+  IMAGE = "image",
 }
