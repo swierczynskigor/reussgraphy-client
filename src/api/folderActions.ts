@@ -19,7 +19,7 @@ export const removeWholeFolder = async (name: string) => {
 export const getFolders = async () => {
   let folders: FolderI[] = [];
   await axios
-    .post(apiUrl + "/api/folders/get")
+    .get(apiUrl + "/api/folders/get")
     .then((response) => {
       // Handle response from the server
       folders = response.data.folders;
@@ -34,7 +34,7 @@ export const getFolders = async () => {
 export const getFolder = async (name: string) => {
   let folders: unknown[] = [];
   await axios
-    .post(apiUrl + "/api/folder/" + name)
+    .get(apiUrl + "/api/folder/" + name)
     .then((response) => {
       // Handle response from the server
       folders = response.data;

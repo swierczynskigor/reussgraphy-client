@@ -1,12 +1,12 @@
 import "./Button.scss";
 
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 import { AddIcon } from "@/assets";
 
 interface Props {
   onClick?: () => void;
-  type: "submit" | "add" | "simple";
+  type: "submit" | "add" | "simple" | "delete";
   children: ReactNode | string;
   disabled?: boolean;
 }
@@ -45,6 +45,12 @@ export const Button = ({
   else if (type === "simple")
     return (
       <button className=" button-simple" disabled={disabled} onClick={onClick}>
+        {children}
+      </button>
+    );
+  else if (type === "delete")
+    return (
+      <button className=" button-delete" disabled={disabled} onClick={onClick}>
         {children}
       </button>
     );

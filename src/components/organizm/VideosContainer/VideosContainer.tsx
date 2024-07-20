@@ -1,4 +1,5 @@
 import { getVideos } from "@/api/videosActions";
+import { VideosList } from "@/components";
 import { Button } from "@/components/atoms";
 import { AddVideoModal } from "@/modals";
 import { Video } from "@/types";
@@ -24,20 +25,24 @@ export const VideosContainer = (props: Props) => {
   };
 
   const handleOpenAddVideoModal = () => setShowAddVideoModal(true);
-  const handleCloseAddVideoModal = () => setShowAddVideoModal(false);
+  const handleCloseAddVideoModal = (newVideos?: Video[]) => {
+    setShowAddVideoModal(false);
+    if (newVideos) setVideos(newVideos);
+  };
 
   return (
     <>
       <AddVideoModal
         close={handleCloseAddVideoModal}
         isVisible={showAddVideoModal}
+        url={props.url}
       />
       <div>
         <h2>{props.title}</h2>
         <Button type="add" onClick={() => handleOpenAddVideoModal()}>
           Add video
         </Button>
-        {/* <VideosList videos={videos} /> */}
+        <VideosList videos={videos} />
       </div>
     </>
   );

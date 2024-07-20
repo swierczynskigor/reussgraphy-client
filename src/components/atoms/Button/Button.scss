@@ -64,4 +64,25 @@ button {
   &-simple:hover {
     background-color: #888888;
   }
+
+  &-simple:disabled {
+    background-color: #e8e8e8;
+    color: #888888;
+    cursor: not-allowed;
+  }
+
+  &-delete {
+    padding: 6px 12px;
+    border-radius: 10px;
+    color: #efefef;
+    font-weight: 700;
+    border: none;
+    background-color: rgb(255, 43, 43);
+    cursor: pointer;
+    transition: ease all 0.5s;
+  }
+  &-delete:hover {
+    background-color: #ff4a4a;
+    transform: scale(1.1);
+  }
 }

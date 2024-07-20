@@ -1,10 +1,13 @@
+import { addVideo } from "@/api";
 import { Button, TextInput } from "@/components";
 import { ModalLayout } from "@/layouts";
+import { Video } from "@/types";
 import React, { useState } from "react";
 
 interface Props {
   isVisible: boolean;
-  close: () => void;
+  close: (videos?: Video[]) => void;
+  url: string;
 }
 
 export const AddVideoModal = (props: Props) => {
@@ -14,9 +17,17 @@ export const AddVideoModal = (props: Props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setConent("");
-    setTitle("");
-    close();
+    const videos = await addVideo(props.url, {
+      title,
+      content,
+    });
+
+    console.log(videos);
+    if (videos.status === 200) {
+      setConent("");
+      setTitle("");
+      props.close(videos.videos);
+    }
   };
 
   return (
