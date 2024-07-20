@@ -14,6 +14,7 @@ import {
   Button,
   FormSection,
   ImagePreview,
+  Row,
   Spacer,
   TextInput,
   UploadContainer,
@@ -32,6 +33,7 @@ export const FolderPagePanel = () => {
   const [sections, setSections] = useState<SectionI[]>([]);
   const [selectedImage, setSelectedImage] = useState("");
   const [showSelectImageModal, setShowSelectImageModal] = useState(false);
+  const [arePhotosVisible, setArePhotosVisible] = useState(true);
 
   const getData = async () => {
     if (params.name) {
@@ -45,6 +47,7 @@ export const FolderPagePanel = () => {
       const header: HeaderDocumentI = data.find(
         (document) => document.id === "index"
       ) as HeaderDocumentI;
+      setArePhotosVisible(header.photosVisible);
 
       setTitle(header.title);
       setDescription(header.description);
@@ -62,6 +65,7 @@ export const FolderPagePanel = () => {
         title,
         description,
         sections,
+        photosVisible: arePhotosVisible,
       });
   };
 
@@ -97,6 +101,18 @@ export const FolderPagePanel = () => {
     }
   };
 
+  const handleChangePhotosVisiblity = async () => {
+    if (params.name) {
+      await updateIndexDocument(params.name, {
+        title,
+        description,
+        sections,
+        photosVisible: !arePhotosVisible,
+      });
+      setArePhotosVisible(!arePhotosVisible);
+    }
+  };
+
   return (
     <main className="folder-page-main">
       <h2>Folder name: {params.name}</h2>
@@ -106,6 +122,15 @@ export const FolderPagePanel = () => {
           🗑️
         </span>
       </p>
+      <Row style={{ gap: 10 }}>
+        <input
+          type="checkbox"
+          checked={arePhotosVisible}
+          onChange={() => handleChangePhotosVisiblity()}
+        />
+        <label>Czy zdjęcia są widoczne?</label>
+      </Row>
+      <Spacer />
       <div>
         <TextInput
           label="Title"

@@ -48,7 +48,12 @@ export const getFolder = async (name: string) => {
 
 export const updateIndexDocument = async (
   url: string,
-  document: { title: string; description: string; sections: SectionI[] }
+  document: {
+    title: string;
+    description: string;
+    sections: SectionI[];
+    photosVisible: boolean;
+  }
 ) => {
   await axios.patch(apiUrl + "/api/folder/" + url, {
     headers: {

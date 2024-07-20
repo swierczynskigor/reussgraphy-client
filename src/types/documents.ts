@@ -4,6 +4,7 @@ export interface HeaderDocumentI {
   sections: SectionI[];
   title: string;
   description: string;
+  photosVisible: boolean;
 }
 
 export interface SectionI {
