@@ -88,8 +88,6 @@ export const AlbumPage = () => {
     setIsViewerOpen(false);
   };
 
-  console.log(videos);
-
   const handleLoadPicture = () => setCountLoaded((prev) => prev + 1);
 
   return (

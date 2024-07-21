@@ -23,7 +23,6 @@ export const ChadPanelLayout = () => {
     const token = localStorage.getItem("token");
     const tokenValid = token ? await verifyToken(token) : false;
     if (token === null || !tokenValid) {
-      console.log("nieprawidłowy token");
       navigate("/czadowyPanel/login");
     } else if (path === "czadowypanel" || path === "login") {
       navigate("/czadowyPanel/settings");

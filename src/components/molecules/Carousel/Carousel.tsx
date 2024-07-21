@@ -22,27 +22,18 @@ export const Carousel = () => {
     const resImages = await getFiles("slider");
     dispatch(currentPhotosActions.setPhotos(resImages));
 
-    console.log(resImages);
-
     return resImages.length;
   };
 
   useEffect(() => {
-    let interval: NodeJS.Timer;
     const loadCarousel = async () => {
       const length = await handleLoadImages();
-      interval = setInterval(() => {
+      setInterval(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % length);
       }, 6000);
     };
     dispatch(currentPhotosActions.setLoaded(0));
     loadCarousel();
-
-    console.log();
-
-    return () => {
-      clearInterval(interval);
-    };
   }, []);
 
   return (

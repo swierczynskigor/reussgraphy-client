@@ -24,7 +24,6 @@ export const loginAction = async (request: FormData, method: string) => {
       return true;
     } else return false;
   } else {
-    console.log("response error");
     return false;
   }
 };

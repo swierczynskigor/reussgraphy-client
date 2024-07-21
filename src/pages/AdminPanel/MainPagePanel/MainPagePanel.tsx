@@ -46,6 +46,7 @@ export const MainPagePanel = () => {
               to={"folders/" + folder.name}
               folderName={folder.name}
               img={folder.image}
+              type={folder.type}
             >
               {folder.name}
             </Card>
